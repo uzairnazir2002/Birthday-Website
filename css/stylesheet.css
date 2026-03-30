@@ -543,6 +543,53 @@ body.peach-after .subtitle {
   font-weight: normal;
 }
 
+.finale-panel {
+  position: absolute;
+  inset: auto 50% clamp(1.4rem, 4vw, 2.2rem) auto;
+  width: min(88%, 520px);
+  display: none;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  transform: translateX(50%);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 1.5rem;
+  background: rgba(255, 250, 245, 0.82);
+  box-shadow: 0 20px 40px rgba(88, 40, 58, 0.18);
+  backdrop-filter: blur(14px);
+  z-index: 6;
+}
+
+.finale-kicker {
+  margin: 0 0 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: rgba(126, 87, 94, 0.72);
+}
+
+.finale-panel h3 {
+  margin: 0 0 0.85rem;
+  font-family: "Happy", "Signika", sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
+  line-height: 1.04;
+  color: #bb5a72;
+}
+
+.finale-body p {
+  margin: 0.45rem 0;
+  font-size: clamp(0.98rem, 1.9vw, 1.08rem);
+  line-height: 1.7;
+  color: #7f5962;
+}
+
+.finale-signature {
+  margin: 0.95rem 0 0;
+  font-family: "Happy", "Signika", sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: #d1627d;
+}
+
 .balloons {
   position: fixed;
   top: 110vh;
@@ -1011,6 +1058,20 @@ body.peach-after .subtitle {
 
   .message p {
     font-size: clamp(1.35rem, 8vw, 2.2rem);
+  }
+
+  .finale-panel {
+    width: min(92%, 420px);
+    padding: 1rem 0.9rem;
+  }
+
+  .finale-panel h3 {
+    font-size: clamp(1.45rem, 7vw, 2rem);
+  }
+
+  .finale-body p {
+    font-size: 0.96rem;
+    line-height: 1.6;
   }
 
   .balloon-border {

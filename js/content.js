@@ -1,40 +1,61 @@
+// Edit this file only to personalize the birthday page.
+// Keep image/audio paths relative to the project root.
+
 window.birthdayContent = {
-  pageTitle: "Happy Birthday",
-  metaDescription: "A birthday celebration page with music, balloons, and photo memories.",
-  ogDescription: "Wish you a very happy birthday",
-  intro: {
-    eyebrow: "A little celebration made just for you",
-    title: "Happy Birthday,\nBabyy",
-    subtitle: "Soft lights, warm music, floating balloons, and the sweetest memories all in one place."
+  seo: {
+    pageTitle: "Happy Birthday, FAATTIIII",
+    metaDescription: "A personalized birthday surprise for FAATTIIII with lights, music, memories, and a heartfelt message.",
+    ogDescription: "A little birthday surprise made with love for FAATTIIII."
   },
-  centerpiece: {
-    kicker: "Tap through the buttons below",
-    title: "The surprise begins here."
+
+  hero: {
+    eyebrow: "A little celebration made especially for you",
+    title: "Happy Birthday,\nFAATTIIII",
+    subtitle: "Soft lights, warm music, floating balloons, and a page full of love made just for your day."
   },
-  audioSrc: "assets/audio/hbd.mp3",
-  profilePhoto: {
-    src: "assets/images/person.png",
-    alt: "Birthday portrait"
+
+  stage: {
+    kicker: "Take it one button at a time",
+    title: "Your little birthday surprise begins here."
   },
-  photos: [
-    {
-      src: "assets/images/photo1.jpg",
-      alt: "Birthday memory one"
+
+  finale: {
+    kicker: "One last thing",
+    title: "I hope this day feels as special as you are.",
+    lines: [
+      "May this year bring you peace in your heart, ease in your life, and happiness that stays with you.",
+      "Thank you for every smile, every moment, and for being such a beautiful part of my life."
+    ],
+    signature: "With love, always for FAATTIIII."
+  },
+
+  media: {
+    audioSrc: "assets/audio/hbd.mp3",
+    profilePhoto: {
+      src: "assets/images/person.png",
+      alt: "Birthday portrait"
     },
-    {
-      src: "assets/images/photo2.jpg",
-      alt: "Birthday memory two"
-    },
-    {
-      src: "assets/images/photo3.jpg",
-      alt: "Birthday memory three"
-    },
-    {
-      src: "assets/images/photo4.jpg",
-      alt: "Birthday memory four"
-    }
-  ],
-  buttons: {
+    galleryPhotos: [
+      {
+        src: "assets/images/photo1.jpg",
+        alt: "Birthday memory one"
+      },
+      {
+        src: "assets/images/photo2.jpg",
+        alt: "Birthday memory two"
+      },
+      {
+        src: "assets/images/photo3.jpg",
+        alt: "Birthday memory three"
+      },
+      {
+        src: "assets/images/photo4.jpg",
+        alt: "Birthday memory four"
+      }
+    ]
+  },
+
+  controls: {
     turnOn: "Turn On The Lights",
     play: "Start The Music",
     banner: "Bring In The Banner",
@@ -44,22 +65,25 @@ window.birthdayContent = {
     wish: "Make A Wish",
     story: "Read The Message"
   },
+
   balloons: [
-    { letter: "H", color: "#F2B300" },
-    { letter: "B", color: "#0719D4" },
-    { letter: "D", color: "#D14D39" },
-    { letter: "B", color: "#8FAD00" },
-    { letter: "A", color: "#8377E4" },
-    { letter: "B", color: "#99C96A" },
-    { letter: "Y", color: "#20CFB4" }
+    { letter: "F", color: "#F2B300" },
+    { letter: "A", color: "#0719D4" },
+    { letter: "A", color: "#D14D39" },
+    { letter: "T", color: "#8FAD00" },
+    { letter: "T", color: "#8377E4" },
+    { letter: "I", color: "#99C96A" },
+    { letter: "I", color: "#20CFB4" }
   ],
-  message: [
+
+  // Use either a plain string or { text: "...", emphasis: true }.
+  storyLines: [
     "Today is...",
     "as beautiful as other days",
     "but you realize",
     "another year has gone",
     "in a blink of the eyes",
-    "however",
+    { text: "however", emphasis: true },
     "Do you know..?",
     "today is just special",
     "so special to you",
@@ -70,7 +94,7 @@ window.birthdayContent = {
     "a piece of happiness to you",
     "I made all this...",
     "as a birthday present to you",
-    "I'm glad we met on zzz",
+    "I'm glad we met in March 2025",
     "thanks for the friendship we made",
     "thanks for everything",
     "I wish you all the best",
@@ -100,6 +124,6 @@ window.birthdayContent = {
     "and make it the best memory..",
     "lastly...",
     "I'd like to wish you one more time",
-    "a very happy birthday babyy \u2764"
+    "a very happy birthday FAATTIIII \u2764"
   ]
 };

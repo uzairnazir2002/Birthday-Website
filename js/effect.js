@@ -4,7 +4,7 @@ $(window).on("load", function () {
 });
 
 $(function () {
-  var content = window.birthdayContent || {};
+  var rawContent = window.birthdayContent || {};
   var balloonSelectors = ["#b1", "#b2", "#b3", "#b4", "#b5", "#b6", "#b7"];
   var balloonsAligned = false;
   var balloonLoopsStarted = false;
@@ -21,6 +21,34 @@ $(function () {
   function renderMultilineText(value) {
     return escapeHtml(value).replace(/\n/g, "<br>");
   }
+
+  function normalizeContent(source) {
+    return {
+      pageTitle: (source.seo && source.seo.pageTitle) || source.pageTitle,
+      metaDescription: (source.seo && source.seo.metaDescription) || source.metaDescription,
+      ogDescription: (source.seo && source.seo.ogDescription) || source.ogDescription,
+      intro: source.hero || source.intro || {},
+      centerpiece: source.stage || source.centerpiece || {},
+      finale: source.finale || {},
+      audioSrc: (source.media && source.media.audioSrc) || source.audioSrc,
+      profilePhoto: (source.media && source.media.profilePhoto) || source.profilePhoto,
+      photos: (source.media && source.media.galleryPhotos) || source.photos || [],
+      buttons: source.controls || source.buttons || {},
+      balloons: source.balloons || [],
+      storyLines: source.storyLines || source.message || []
+    };
+  }
+
+  function renderStoryLine(line) {
+    if (line && typeof line === "object") {
+      var text = escapeHtml(line.text || "");
+      return "<p>" + (line.emphasis ? "<strong>" + text + "</strong>" : text) + "</p>";
+    }
+
+    return "<p>" + escapeHtml(line) + "</p>";
+  }
+
+  var content = normalizeContent(rawContent);
 
   function applyContent() {
     if (content.pageTitle) {
@@ -44,6 +72,20 @@ $(function () {
     if (content.centerpiece) {
       $("#centerpiece-kicker").text(content.centerpiece.kicker || "");
       $("#centerpiece-title").text(content.centerpiece.title || "");
+    }
+
+    if (content.finale) {
+      $("#finale-kicker").text(content.finale.kicker || "");
+      $("#finale-title").text(content.finale.title || "");
+      $("#finale-signature").text(content.finale.signature || "");
+
+      if (Array.isArray(content.finale.lines) && content.finale.lines.length) {
+        $("#finale-body").html(
+          content.finale.lines.map(function (line) {
+            return "<p>" + escapeHtml(line) + "</p>";
+          }).join("")
+        );
+      }
     }
 
     if (content.audioSrc) {
@@ -84,13 +126,9 @@ $(function () {
       });
     }
 
-    if (Array.isArray(content.message) && content.message.length) {
+    if (Array.isArray(content.storyLines) && content.storyLines.length) {
       $(".message").html(
-        content.message
-          .map(function (line) {
-            return "<p>" + escapeHtml(line) + "</p>";
-          })
-          .join("")
+        content.storyLines.map(renderStoryLine).join("")
       );
     }
   }
@@ -284,6 +322,7 @@ $(function () {
 
     $(this).fadeOut("slow");
     $messages.hide();
+    $("#finale-panel").hide();
 
     $(".cake").fadeOut("fast").promise().done(function () {
       $(".message").fadeIn("slow", function () {
@@ -301,8 +340,10 @@ $(function () {
           messageLoop(index + 1);
         });
       } else {
-        $messages.eq(index).fadeIn("slow").promise().done(function () {
-          $(".cake").fadeIn("fast");
+        $messages.eq(index).fadeIn("slow").delay(1800).fadeOut("slow").promise().done(function () {
+          $(".message").fadeOut("fast").promise().done(function () {
+            $("#finale-panel").fadeIn("slow");
+          });
         });
       }
     }
